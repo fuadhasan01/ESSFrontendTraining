@@ -1,0 +1,43 @@
+const arrays = [1, 2, 3, 4, 5];
+
+//Type of array
+console.log(typeof arrays); // Outputs: object
+
+console.log(arrays.length); // Outputs: 5
+
+//Cars Array
+const cars = ["Saab", "Volvo", "BMW"];
+console.log(cars);
+console.log(cars[0]);
+
+//Convert array to string
+console.log(cars.toString());
+
+//Join array elements with a specified separator
+console.log(cars.join(" - "));
+
+function addTwoNumbers(a, b) {
+    return a + b;
+}
+
+//Different Types in an array
+//Add function in an array
+const funcArray = [1, "Hello", true, addTwoNumbers];
+console.log(funcArray);
+console.log(funcArray[3](5, 10)); // Outputs: 15
+const mixedArray = [1, "Hello", true, null, undefined, { name: "John" }, [1, 2, 3]];
+console.log(mixedArray);
+
+//looping array elements
+for (let i = 0; i < cars.length; i++) {
+    console.log(cars[i]);
+}
+
+cars.forEach(function(car) {
+    console.log(car);
+});
+
+//For...of loop
+for (const car of cars) {
+    console.log(car);
+}
