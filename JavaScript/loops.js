@@ -63,6 +63,15 @@ outerLoop: for(let p=1; p<=3; p++){
     }
 }
 
+let text = "";
+
+loop1: for (let j = 1; j < 5; j++) {
+  loop2: for (let i = 1; i < 5; i++) {
+    if (i === 3) { continue loop1; }
+    text += i;
+   }
+}
+
 //Infinite loop example (commented out to prevent actual infinite loop)
 // while(true){
 //     console.log("This is an infinite loop");
