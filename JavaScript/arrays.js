@@ -41,3 +41,29 @@ cars.forEach(function(car) {
 for (const car of cars) {
     console.log(car);
 }
+
+//Array adding elements
+cars.push("Audi"); // Adds to the end
+console.log(cars);
+
+//Array chekck
+console.log(Array.isArray(cars)); // true
+
+//Array Methods
+console.log(cars.length); // 4
+console.log(cars.toString()); 
+console.log(cars.at(2)); // "BMW"
+//Join
+console.log(cars.join(" | ")); // "Saab | Volvo | BMW | Audi"
+//Pop
+console.log(cars.pop()); // "Audi"
+console.log(cars);
+//Push
+cars.push("Audi");
+console.log(cars);
+//Shift
+console.log(cars.shift()); // "Saab"
+console.log(cars);
+//Unshift
+cars.unshift("Saab");
+console.log(cars);
