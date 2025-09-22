@@ -17,7 +17,7 @@ console.log(cars.toString());
 console.log(cars.join(" - "));
 
 function addTwoNumbers(a, b) {
-    return a + b;
+  return a + b;
 }
 
 //Different Types in an array
@@ -25,21 +25,29 @@ function addTwoNumbers(a, b) {
 const funcArray = [1, "Hello", true, addTwoNumbers];
 console.log(funcArray);
 console.log(funcArray[3](5, 10)); // Outputs: 15
-const mixedArray = [1, "Hello", true, null, undefined, { name: "John" }, [1, 2, 3]];
+const mixedArray = [
+  1,
+  "Hello",
+  true,
+  null,
+  undefined,
+  { name: "John" },
+  [1, 2, 3],
+];
 console.log(mixedArray);
 
 //looping array elements
 for (let i = 0; i < cars.length; i++) {
-    console.log(cars[i]);
+  console.log(cars[i]);
 }
 
-cars.forEach(function(car) {
-    console.log(car);
+cars.forEach(function (car) {
+  console.log(car);
 });
 
 //For...of loop
 for (const car of cars) {
-    console.log(car);
+  console.log(car);
 }
 
 //Array adding elements
@@ -51,7 +59,7 @@ console.log(Array.isArray(cars)); // true
 
 //Array Methods
 console.log(cars.length); // 4
-console.log(cars.toString()); 
+console.log(cars.toString());
 console.log(cars.at(2)); // "BMW"
 //Join
 console.log(cars.join(" | ")); // "Saab | Volvo | BMW | Audi"
@@ -81,7 +89,7 @@ console.log(nestedArray.flat(2)); // [1, 2, 3, 4, 5, 6, 7]
 
 //FlatMap
 const words = ["Hello World", "JavaScript is fun"];
-const flattened = words.flatMap(word => word.split(" "));
+const flattened = words.flatMap((word) => word.split(" "));
 console.log(flattened); // ["Hello", "World", "JavaScript", "is", "fun"]
 //Splice
 const spliceArray = ["Jan", "March", "April", "June"];
@@ -108,3 +116,80 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const firstEven = numbers.find((num, index, numbers) => num === 2);
 console.log(firstEven); // Outputs: 2
 
+//Array Find with all parameters used
+const firstEvenWithParams = numbers.find((num, index, arr) => {
+  console.log(`Index: ${index}, Array: ${arr}`);
+  return num % 2 === 0;
+});
+console.log(firstEvenWithParams); // Outputs: 2
+
+//Find Index
+const firstEvenIndex = numbers.findIndex((num) => num % 2 === 0);
+console.log(firstEvenIndex); // Outputs: 1
+
+//Find Last
+const lastEven = numbers.findLast((num) => num % 2 === 0);
+console.log(lastEven); // Outputs: 10
+
+//Find Last Index
+const lastEvenIndex = numbers.findLastIndex((num) => num % 2 === 0);
+console.log(lastEvenIndex); // Outputs: 9
+
+//Array Sort
+const unsortedArray = [40, 100, 1, 5, 25, 10];
+unsortedArray.sort();
+console.log(unsortedArray); // Outputs: [1, 10, 100, 25, 40, 5]
+
+//String Array Sort
+const stringArray = ["Banana", "Apple", "Cherry"];
+stringArray.sort();
+console.log(stringArray); // Outputs: ["Apple", "Banana", "Cherry"]
+
+//Reverse
+stringArray.reverse();
+console.log(stringArray); // Outputs: ["Cherry", "Banana", "Apple"]
+
+//Tosorted
+const sortedArray = unsortedArray.toSorted();
+console.log(sortedArray); // Outputs: [1, 5, 10, 25, 40, 100]
+console.log(unsortedArray); // Original array remains unchanged
+
+//Toreveresed
+const reversedArray = stringArray.toReversed();
+console.log(reversedArray); // Outputs: ["Apple", "Banana", "Cherry"]
+console.log(stringArray); // Original array remains unchanged
+
+//Numeric Sort
+const numericArray = [40, 100, 1, 5, 25, 10];
+numericArray.sort((a, b) => a - b); // how this work? explained below
+// Explanation: The compare function (a, b) => a - b sorts the numbers in ascending order.
+// If the result is negative, a is sorted before b.
+// If the result is positive, b is sorted before a.
+// If the result is zero, their order remains unchanged.
+console.log(numericArray); // Outputs: [1, 5, 10, 25, 40, 100]
+
+//Decending Order Sort
+numericArray.sort((a, b) => b - a);
+console.log(numericArray); // Outputs: [100, 40, 25, 10, 5, 1]
+
+//Find the highest and lowest number in an array
+const highestNumber = Math.max(...numericArray);
+const lowestNumber = Math.min(...numericArray);
+console.log(`Highest: ${highestNumber}, Lowest: ${lowestNumber}`); // Outputs: Highest: 100, Lowest: 1
+
+//Array Object
+const employees = [
+  { name: "John", age: 30 },
+  { name: "Jane", age: 25 },
+  { name: "Jim", age: 35 },
+];
+//Sort by age
+employees.sort((a, b) => a.age - b.age);
+console.log(employees);
+
+//Array Iteration Methods
+//ForEach
+const array = ["Fuad", "Amin", "Rony"];
+array.forEach((value, index, array) => {
+  console.log(value);
+});
