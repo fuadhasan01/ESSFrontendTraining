@@ -193,3 +193,86 @@ const array = ["Fuad", "Amin", "Rony"];
 array.forEach((value, index, array) => {
   console.log(value);
 });
+
+//Map
+const numbersMap = [1, 2, 3, 4, 5];
+const squaredNumbers = numbersMap.map((num) => num * num);
+console.log(squaredNumbers); // Outputs: [1, 4, 9, 16, 25]
+
+//FlatMap
+const phrases = ["Hello World", "JavaScript is fun"];
+const wordsFlatMap = phrases.flatMap((phrase) => phrase.split(" "));
+console.log(wordsFlatMap); // Outputs: ["Hello", "World", "JavaScript", "is", "fun"]
+
+//Filter
+const evenNumbers = numbers.filter((num) => num > 6);
+console.log(evenNumbers); // Outputs: [7, 8, 9, 10]
+
+//Reduce
+//Explanation: The reduce method takes a callback function and an initial value.
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0); // 0 is the initial value
+console.log(sum); // Outputs: 55
+
+//Reduce Right
+const sumRight = numbers.reduceRight((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+//Every
+const allAboveZero = numbers.every((num) => num > 0);
+console.log(allAboveZero); // Outputs: true
+
+//Some
+const someAboveFive = numbers.some((num) => num > 9);
+console.log(someAboveFive); // Outputs: true
+
+//From
+const str = "Hello";
+const strArray = Array.from(str);
+console.log(strArray); // Outputs: ['H', 'e', 'l', 'l', 'o']
+
+//Other way to create array from string
+const strArray2 = [...str];
+console.log(strArray2); // Outputs: ['H', 'e', 'l', 'l', 'o']
+
+//Array keys
+const carArray = ["Saab", "Volvo", "BMW"];
+const keys = carArray.keys();
+for (const key of keys) {
+  console.log(key); // Outputs: 0, 1, 2
+}
+
+//Entries
+const entries = carArray.entries();
+for (const entry of entries) {
+  console.log(entry); // Outputs: [0, 'Saab'], [1, 'Volvo'], [2, 'BMW']
+}
+
+//With
+const withArray = carArray.with(1, "Audirr");
+console.log(withArray); // Outputs: ['Saab', 'Audirr', 'BMW']
+
+//Spread Operator
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2];
+console.log(combined); // Outputs: [1, 2, 3, 4, 5, 6]
+
+//Rest Parameter
+function sumAll(...args) {
+  return args.reduce((acc, val) => acc + val, 0);
+}
+
+//Destructuring
+const destructureArray = [1, 2, 3];
+const [first, second, third] = destructureArray;
+console.log(first, second, third); // Outputs: 1 2 3
+const [one, , three] = destructureArray;
+console.log(one, three); // Outputs: 1 3
+
+//Tricky part of array destructuring
+const nestedDestructure = [1, [2, 3], 4];
+const [num1, [num2, num3], num4] = nestedDestructure;
+console.log(num1, num2, num3, num4); // Outputs: 1 2 3 4
