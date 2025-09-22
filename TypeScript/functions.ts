@@ -44,3 +44,8 @@ function sum(...nums: number[]): number {
 }
 
 console.log(sum(1, 2, 3, 4)); // 10
+
+//Return Type
+function logMessage(msg: string): void {
+  console.log(msg);
+}
