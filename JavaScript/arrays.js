@@ -276,3 +276,35 @@ console.log(one, three); // Outputs: 1 3
 const nestedDestructure = [1, [2, 3], 4];
 const [num1, [num2, num3], num4] = nestedDestructure;
 console.log(num1, num2, num3, num4); // Outputs: 1 2 3 4
+
+//Default values in destructuring
+const defaultDestructure = [1];
+const [n1, n2 = 2] = defaultDestructure;
+console.log(n1, n2); // Outputs: 1 2
+
+//Swapping variables using destructuring
+let a = 1,
+  b = 2;
+[a, b] = [b, a];
+console.log(a, b); // Outputs: 2 1
+
+//Nested array destructuring
+const complexArray = [1, [2, [3, 4]], 5];
+const [c1, [c2, [c3, c4]], c5] = complexArray;
+console.log(c1, c2, c3, c4, c5); // Outputs: 1 2 3 4 5
+
+//Const vs Let in arrays
+const constArray = [1, 2, 3];
+constArray.push(4);
+console.log(constArray); // Outputs: [1, 2, 3, 4] // Allowed
+
+// constArray = [5, 6, 7]; // Error: Assignment to constant variable. Not allowed
+
+let letArray = [1, 2, 3];
+letArray = [4, 5, 6]; // Allowed
+console.log(letArray); // Outputs: [4, 5, 6]
+
+//Typed Arrays
+const intArray = new Int32Array([1, 2, 3, 4]);
+console.log(intArray); // Outputs: Int32Array(4) [1, 2, 3, 4]
+console.log(intArray.length); // Outputs: 4
