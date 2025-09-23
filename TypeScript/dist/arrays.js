@@ -61,4 +61,54 @@ const students = [
 const passedOnly = students.filter((s) => s.passed); // Student[]
 const namesOnly = students.map((s) => s.name); // string[]
 console.log(namesOnly);
+//Union Arrays vs. Array Unions (Important!)
+let mixed = [1, "two", 3]; // ok
+let oneType;
+oneType = [1, 2]; // ok
+oneType = ["a", "b"]; // ok
+// oneType = [1, "a"];    // ❌ not allowed
+// Tuples (Fixed shape arrays)
+let userTuple = ["Rafi", 20];
+// userTuple = [20, "Rafi"]; // ❌ wrong order
+//Readonly Arrays (Protect from changes)
+const days = ["Sat", "Sun", "Mon"];
+// days.push("Tue"); // ❌ Error: readonly
+const grid = [
+    [1, 2],
+    [3, 4],
+];
+//Practice Exercise
+//Create fruits: string[] with "mango","banana","apple".
+const fruits = ["mango", "banana", "apple"];
+//From const nums = [5, 8, 12, 3, 9], make a new array bigs with numbers >= 8.
+const nums4 = [5, 8, 12, 3, 9];
+const newnums4 = nums4.filter((num) => num >= 8);
+console.log(newnums4);
+//Make ids: (number | string)[] and store 101, "A12", 202, "B09".
+const ids = [101, "A12", 202, "B09"];
+const books = [
+    { title: "Kothao Keu Nei", price: 500, inStock: true },
+    { title: "Opekkha", price: 560, inStock: false },
+];
+const inStockBooks = books.filter((book) => book.inStock);
+// Write doubleAll function that takes number[] and returns a new number[] with each value ×2 (use map).
+function doubleAll(nums) {
+    return nums.map((num) => num * 2);
+}
+// Use reduce to sum prices = [120, 80, 150]. Save to total.
+const prices = [120, 80, 150];
+prices.reduce(function (total, price) {
+    return (total += price);
+}, 0);
+// Create a tuple cityInfo: [string, number] for ("Dhaka", 21000000).
+const cityInfo = ["Dhaka", 21000000];
+//Make const statuses: readonly string[] = ["new", "processing", "done"]. Try to push("archived")—what happens and why?
+//it will give error because if we define an array as readonly we can't push anything to this
+//Create matrix: number[][] for a 2×3 matrix. Change the middle element to 999
+const matrix = [
+    [1, 2, 3],
+    [4, 999, 6],
+];
+//Make onlyStrings: string[] | number[]. Assign strings first, then try to assign [1, "two"]. Is it allowed? Why?
+//No its not allowed because onlyStrings can be only string full or full number. It's to allow to asign mix values in this
 //# sourceMappingURL=arrays.js.map
