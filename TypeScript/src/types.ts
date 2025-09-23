@@ -53,7 +53,8 @@ function greet(name: string): string {
 }
 
 //Special Types
-let example: string | null;
+type test = string | null;
+let example: test;
 example = null;
 function sayHello(): void {
   console.log("Hello");

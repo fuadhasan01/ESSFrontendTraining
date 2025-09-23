@@ -38,7 +38,6 @@ function add(a, b) {
 function greet(name) {
     return "Hello, " + name;
 }
-//Special Types
 let example;
 example = null;
 function sayHello() {
