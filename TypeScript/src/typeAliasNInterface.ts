@@ -196,6 +196,7 @@ interface Rectangle {
   width: number;
   height: number;
 }
+
 interface Circle {
   kind: "circle";
   radius: number;
