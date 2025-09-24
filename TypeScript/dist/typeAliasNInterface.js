@@ -52,4 +52,17 @@ class Car2 {
     }
 }
 const box = { width: 100, height: 50, color: "blue" };
+const cb = { width: 10, height: 20, color: "red" };
+const cmp1 = (a, b) => a - b;
+const cmp2 = (a, b) => a - b;
+function area(s) {
+    switch (s.kind) {
+        case "square":
+            return s.size * s.size;
+        case "rectangle":
+            return s.width * s.height;
+        case "circle":
+            return Math.PI * s.radius * s.radius;
+    }
+}
 //# sourceMappingURL=typeAliasNInterface.js.map

@@ -164,3 +164,51 @@ interface Box {
   color: string;
 }
 const box: Box = { width: 100, height: 50, color: "blue" };
+
+//Mix of Type Alias AND Interface
+interface Box {
+  width: number;
+  height: number;
+}
+type Colored = { color: string };
+
+type ColoredBox = Box & Colored;
+
+const cb: ColoredBox = { width: 10, height: 20, color: "red" };
+
+// Function types: alias vs interface
+type Comparator = (a: number, b: number) => number;
+
+interface Compare {
+  (a: number, b: number): number;
+}
+
+const cmp1: Comparator = (a, b) => a - b;
+const cmp2: Compare = (a, b) => a - b;
+
+//Discriminated union (powerful pattern)
+interface Square {
+  kind: "square";
+  size: number;
+}
+interface Rectangle {
+  kind: "rectangle";
+  width: number;
+  height: number;
+}
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+type Shape = Square | Rectangle | Circle;
+
+function area(s: Shape): number {
+  switch (s.kind) {
+    case "square":
+      return s.size * s.size;
+    case "rectangle":
+      return s.width * s.height;
+    case "circle":
+      return Math.PI * s.radius * s.radius;
+  }
+}
