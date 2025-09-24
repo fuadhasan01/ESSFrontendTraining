@@ -59,3 +59,6 @@ example = null;
 function sayHello(): void {
   console.log("Hello");
 }
+
+let undifinedType: undefined = undefined;
+// undifinedType = "Test"; //It can't carry any type other than undefined
