@@ -92,7 +92,7 @@ oneType = ["a", "b"]; // ok
 // oneType = [1, "a"];    // ❌ not allowed
 
 // Tuples (Fixed shape arrays)
-let userTuple: [string, number] = ["Rafi", 20];
+let userTuple: [string, number, boolean] = ["Rafi", 20, true];
 // userTuple = [20, "Rafi"]; // ❌ wrong order
 
 //Readonly Arrays (Protect from changes)
