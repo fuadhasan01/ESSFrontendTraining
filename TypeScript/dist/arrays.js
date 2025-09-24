@@ -68,7 +68,7 @@ oneType = [1, 2]; // ok
 oneType = ["a", "b"]; // ok
 // oneType = [1, "a"];    // ❌ not allowed
 // Tuples (Fixed shape arrays)
-let userTuple = ["Rafi", 20];
+let userTuple = ["Rafi", 20, true];
 // userTuple = [20, "Rafi"]; // ❌ wrong order
 //Readonly Arrays (Protect from changes)
 const days = ["Sat", "Sun", "Mon"];

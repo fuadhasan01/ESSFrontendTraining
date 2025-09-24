@@ -39,4 +39,5 @@ console.log(sum(1, 2, 3, 4)); // 10
 function logMessage(msg) {
     console.log(msg);
 }
+logMessage("Hello!");
 //# sourceMappingURL=functions.js.map

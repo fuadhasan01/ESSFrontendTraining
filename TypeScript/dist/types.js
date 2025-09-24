@@ -43,4 +43,6 @@ example = null;
 function sayHello() {
     console.log("Hello");
 }
+let undifinedType = undefined;
+// undifinedType = "Test"; //It can't carry any type other than undefined
 //# sourceMappingURL=types.js.map
