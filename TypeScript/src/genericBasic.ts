@@ -43,3 +43,30 @@ const y = first([1, 2, 3]); // y: number | undefined
 
 console.log(x);
 console.log(y);
+
+//Generic Type Aliases & Interfaces
+//Box Type
+type Box<T> = { value: T };
+
+const box1: Box<number> = { value: 123 };
+const box2: Box<string> = { value: "pen" };
+
+//Pair Type (Two Placeholders)
+type Pair<A, B> = { first: A; second: B };
+
+const p1: Pair<string, number> = { first: "age", second: 21 };
+const p2: Pair<boolean, string> = { first: true, second: "ok" };
+
+//Generic interface for API responses
+interface ApiResponse<T> {
+  data: T;
+  ok: boolean;
+  message?: string;
+}
+
+type User = { id: number; name: string };
+
+const res: ApiResponse<User> = {
+  data: { id: 1, name: "Fuad" },
+  ok: true,
+};

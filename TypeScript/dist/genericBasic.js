@@ -37,4 +37,12 @@ const x = echo("hi"); // x: string
 const y = first([1, 2, 3]); // y: number | undefined
 console.log(x);
 console.log(y);
+const box1 = { value: 123 };
+const box2 = { value: "pen" };
+const p1 = { first: "age", second: 21 };
+const p2 = { first: true, second: "ok" };
+const res = {
+    data: { id: 1, name: "Fuad" },
+    ok: true,
+};
 //# sourceMappingURL=genericBasic.js.map
