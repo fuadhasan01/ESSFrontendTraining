@@ -73,3 +73,94 @@ const u: UserWithTime = {
 //1. Reusability: Define once, use many times.
 //2. Readability: Shorter and clearer names.
 //3. Maintainability: Change in one place if needed.
+
+//INTERFACES
+//What is an Interface?
+//An Interface is a way to define the shape of an object. It is similar to a type alias for object types but has some additional features.
+
+//Describe the shape of an object.
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+}
+
+const prod: Product = { id: 1, title: "Pen", price: 20 };
+prod.id = 2;
+
+//Optional & Readonly in interfaces
+interface Car {
+  readonly vin: string; // cannot be changed after assignment
+  model: string;
+  year: number;
+  color?: string; // optional
+}
+const myCar: Car = { vin: "1HGBH41JXMN109186", model: "Civic", year: 2020 };
+// myCar.vin = "NEWVIN"; // ❌ Error: cannot modify readonly property
+myCar.color = "Red"; // ok
+
+//Interface with Functions
+interface Calculator {
+  add(a: number, b: number): number;
+  subtract(a: number, b: number): number;
+}
+const calc: Calculator = {
+  add: (x, y) => x + y,
+  subtract: (x, y) => x - y,
+};
+console.log(calc.add(5, 3)); // 8
+
+//Methods in Interfaces
+interface Logger {
+  logInfo(message: string): void;
+  logError(error: string): void;
+}
+const logger: Logger = {
+  logInfo: (msg) => console.log("Info: " + msg),
+  logError: (err) => console.error("Error: " + err),
+};
+logger.logInfo("Application started");
+
+//Extending interfaces
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  bark(): void;
+}
+
+const d: Dog = {
+  name: "Buddy",
+  bark: () => console.log("woof"),
+};
+
+//Index signatures (dictionary-like)
+interface StringMap {
+  [key: string]: string;
+}
+
+const labels: StringMap = { en: "Hello", bn: "হ্যালো" };
+
+//Class implements interface
+interface Drivable {
+  speed: number;
+  drive(km: number): void;
+}
+
+class Car2 implements Drivable {
+  speed = 0;
+  drive(km: number) {
+    this.speed += km;
+  }
+}
+
+//Merging interfaces
+interface Box {
+  width: number;
+  height: number;
+}
+interface Box {
+  color: string;
+}
+const box: Box = { width: 100, height: 50, color: "blue" };

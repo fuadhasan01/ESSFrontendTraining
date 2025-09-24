@@ -25,8 +25,31 @@ const u = {
     createdAt: new Date(),
     updatedAt: new Date(),
 };
-//Why use Type Aliases?
-//1. Reusability: Define once, use many times.
-//2. Readability: Shorter and clearer names.
-//3. Maintainability: Change in one place if needed.
+const prod = { id: 1, title: "Pen", price: 20 };
+prod.id = 2;
+const myCar = { vin: "1HGBH41JXMN109186", model: "Civic", year: 2020 };
+// myCar.vin = "NEWVIN"; // ❌ Error: cannot modify readonly property
+myCar.color = "Red"; // ok
+const calc = {
+    add: (x, y) => x + y,
+    subtract: (x, y) => x - y,
+};
+console.log(calc.add(5, 3)); // 8
+const logger = {
+    logInfo: (msg) => console.log("Info: " + msg),
+    logError: (err) => console.error("Error: " + err),
+};
+logger.logInfo("Application started");
+const d = {
+    name: "Buddy",
+    bark: () => console.log("woof"),
+};
+const labels = { en: "Hello", bn: "হ্যালো" };
+class Car2 {
+    speed = 0;
+    drive(km) {
+        this.speed += km;
+    }
+}
+const box = { width: 100, height: 50, color: "blue" };
 //# sourceMappingURL=typeAliasNInterface.js.map
