@@ -73,10 +73,34 @@
 // console.log(c1.join("-")); // ?
 // console.log(c2.reduce((x, y) => x + y)); // ?
 
-function lengthOf<T extends { length: number }>(item: T): number {
-  return item.length;
+// function lengthOf<T extends { length: number }>(item: T): number {
+//   return item.length;
+// }
+
+// console.log(lengthOf("Hello")); // ?
+// console.log(lengthOf([1, 2, 3])); // ?
+// console.log(lengthOf({ length: 10 })); // ?
+
+// function getProp<T, K extends keyof T>(obj: T, key: K) {
+//   return obj[key];
+// }
+
+// let person = { name: "Fuad", age: 25 };
+
+// console.log(getProp(person, "name")); // ?
+// console.log(getProp(person, "age")); // ?
+
+// function strange<T>(a: T, b: any): T {
+//   return b;
+// }
+
+// console.log(strange(10, "Hello")); // ?
+// console.log(strange("Hi", 123)); // ?
+
+function toArray<T>(value: T): T[] {
+  return [value];
 }
 
-console.log(lengthOf("Hello")); // ?
-console.log(lengthOf([1, 2, 3])); // ?
-console.log(lengthOf({ length: 10 })); // ?
+let arr = toArray<unknown>("Hello");
+console.log(arr[0]); // ?
+console.log(typeof arr[0]); // ?
