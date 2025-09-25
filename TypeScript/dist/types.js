@@ -51,4 +51,20 @@ let val2 = { name: "Fuad" }; // object can hold only non-primitive types
 // val2 = 3; // ❌ error
 val2 = [1, 2, 3]; // ok
 console.log(val2);
+let scores = {
+    Alice: 90,
+    Bob: 85,
+};
+scores["Charlie"] = 88; // ok
+// scores["David"] = "A"; // ❌ error, value must be number
+console.log(scores);
+let move;
+move = "up"; // ok
+let name2;
+name2 = "Fuad"; // ok
+name2 = null; // ok
+//Tuples
+// A Tuple is a fixed-length array with specified types for each element.
+let point = [10, 20]; // [x, y]
+let userInfo = ["Alice", 30, true]; // [name, age, isMember]
 //# sourceMappingURL=types.js.map

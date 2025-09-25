@@ -70,3 +70,32 @@ let val2: object = { name: "Fuad" }; // object can hold only non-primitive types
 // val2 = 3; // ❌ error
 val2 = [1, 2, 3]; // ok
 console.log(val2);
+
+//Record Types
+// A Record is an object type with specified key and value types.
+type Scores = Record<string, number>;
+let scores: Scores = {
+  Alice: 90,
+  Bob: 85,
+};
+scores["Charlie"] = 88; // ok
+// scores["David"] = "A"; // ❌ error, value must be number
+console.log(scores);
+
+//Literal Types
+// A variable can be restricted to a specific value.
+type Direction = "up" | "down" | "left" | "right";
+let move: Direction;
+move = "up"; // ok
+// move = "forward"; // ❌ error, not allowed
+
+//Nullable Types
+type NullableString = string | null;
+let name2: NullableString;
+name2 = "Fuad"; // ok
+name2 = null; // ok
+
+//Tuples
+// A Tuple is a fixed-length array with specified types for each element.
+let point: [number, number] = [10, 20]; // [x, y]
+let userInfo: [string, number, boolean] = ["Alice", 30, true]; // [name, age, isMember]
