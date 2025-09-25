@@ -213,3 +213,11 @@ function area(s: Shape): number {
       return Math.PI * s.radius * s.radius;
   }
 }
+
+interface keyValue<T> {
+  [key: string]: T;
+}
+const scoreBoard: keyValue<number> = {
+  Robin: 50,
+  Alice: 80,
+};

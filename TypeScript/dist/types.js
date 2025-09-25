@@ -45,4 +45,10 @@ function sayHello() {
 }
 let undifinedType = undefined;
 // undifinedType = "Test"; //It can't carry any type other than undefined
+let val = "Hello"; // {} can hold any non-primitive type
+val = 2; // {} can hold any non-primitive type
+let val2 = { name: "Fuad" }; // object can hold only non-primitive types
+// val2 = 3; // ❌ error
+val2 = [1, 2, 3]; // ok
+console.log(val2);
 //# sourceMappingURL=types.js.map

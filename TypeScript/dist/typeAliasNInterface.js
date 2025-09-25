@@ -65,4 +65,8 @@ function area(s) {
             return Math.PI * s.radius * s.radius;
     }
 }
+const scoreBoard = {
+    Robin: 50,
+    Alice: 80,
+};
 //# sourceMappingURL=typeAliasNInterface.js.map
