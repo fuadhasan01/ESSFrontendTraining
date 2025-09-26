@@ -130,3 +130,13 @@
 // } else {
 //   console.log("No string found");
 // }
+
+// function show({ x = 0, y = 0 }: { x?: number; y?: number }) {
+//   console.log(x + y);
+// }
+// show({ x: 5 });
+// show({});
+
+let val2: unknown = "TypeScript";
+console.log((val2 as string).length);
+console.log((val2 as number) + 10);
