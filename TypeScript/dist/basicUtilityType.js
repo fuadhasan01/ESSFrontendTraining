@@ -28,4 +28,57 @@ const product = {
     price: 1200,
 };
 console.log(product);
+// { id: number; name: string; }
+const u5 = { id: 1, name: "Fuad" };
+console.log(u5);
+// "active" | "pending";
+const s1 = "active"; // ✅ ok
+console.log(s1);
+// "inactive" | "pending";
+const s3 = "inactive"; // ✅ ok
+console.log(s3);
+// string
+const str = "Hello"; // ✅ ok
+console.log(str);
+// string
+const result = "Hello";
+console.log(result);
+//Another example of ReturnType
+function fetchUser(id) {
+    return { id, name: "Fuad", email: "fuad@example.com" };
+}
+// { id: number; name: string; email: string; }
+const user = fetchUser(1);
+console.log(user);
+// [string, number]
+const args = ["Hello", 42];
+console.log(args);
+//ConstructorParameters<T>
+// Gets the parameter types of a constructor function as a tuple.
+class MyClass {
+    name;
+    age;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+// [string, number]
+const constructorArgs = ["Fuad", 25];
+const myInstance = new MyClass(...constructorArgs);
+console.log(myInstance);
+//InstanceType<T>
+// Gets the instance type of a constructor function.
+class AnotherClass {
+    title;
+    constructor(title) {
+        this.title = title;
+    }
+    getTitle() {
+        return this.title;
+    }
+}
+// AnotherClass
+const anotherInstance = new AnotherClass("Hello");
+console.log(anotherInstance.getTitle());
 //# sourceMappingURL=basicUtilityType.js.map
