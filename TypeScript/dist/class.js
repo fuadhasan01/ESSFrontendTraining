@@ -43,6 +43,12 @@ class Employee {
         this.employeeID = employeeID;
         this.department = department;
     }
+    setEmployeeID(id) {
+        this.employeeID = id;
+    }
+    getEmployeeId() {
+        return this.employeeID;
+    }
 }
 const emp1 = new Employee("Charlie", 2001, "HR");
 console.log(emp1.name); // ok
@@ -59,7 +65,8 @@ class Manager extends Employee {
 const mgr1 = new Manager("David", 3001, "IT");
 console.log(mgr1.name); // ok
 console.log(mgr1.getDepartment()); // ok
-// console.log(mgr1.employeeID); // ❌ error
+console.log(mgr1.getEmployeeId()); // ❌ error
+mgr1.setEmployeeID(4001); // ok
 //Static Members
 class Company {
     static companyName = "TechCorp"; // static property
@@ -151,6 +158,15 @@ console.log(`Circle Area: ${circle.area()}`);
 console.log(`Circle Perimeter: ${circle.perimeter()}`);
 circle.describe();
 class Car {
+    name;
+    speed;
+    constructor(name, speed) {
+        this.name = name;
+        this.speed = speed;
+    }
+    printCar() {
+        console.log(`Car Name: ${this.name}, Speed: ${this.speed}`);
+    }
     start() {
         console.log("Car started.");
     }
@@ -161,4 +177,9 @@ class Car {
         console.log("Car stopped.");
     }
 }
+const myCar = new Car("Toyota", 120);
+myCar.printCar();
+myCar.start();
+myCar.drive(100);
+myCar.stop();
 //# sourceMappingURL=class.js.map

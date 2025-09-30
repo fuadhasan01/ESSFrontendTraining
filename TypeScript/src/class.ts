@@ -51,6 +51,12 @@ class Employee {
     this.employeeID = employeeID;
     this.department = department;
   }
+  setEmployeeID(id: number) {
+    this.employeeID = id;
+  }
+  getEmployeeId() {
+    return this.employeeID;
+  }
 }
 const emp1 = new Employee("Charlie", 2001, "HR");
 console.log(emp1.name); // ok
@@ -67,7 +73,8 @@ class Manager extends Employee {
 const mgr1 = new Manager("David", 3001, "IT");
 console.log(mgr1.name); // ok
 console.log(mgr1.getDepartment()); // ok
-// console.log(mgr1.employeeID); // ❌ error
+console.log(mgr1.getEmployeeId()); // ❌ error
+mgr1.setEmployeeID(4001); // ok
 
 //Static Members
 class Company {
@@ -166,11 +173,24 @@ circle.describe();
 
 //Interfaces
 interface Drivable {
+  name: string;
+  speed: number;
   start(): void;
   drive(distance: number): void;
   stop(): void;
 }
 class Car implements Drivable {
+  name: string;
+  speed: number;
+
+  constructor(name: string, speed: number) {
+    this.name = name;
+    this.speed = speed;
+  }
+  printCar() {
+    console.log(`Car Name: ${this.name}, Speed: ${this.speed}`);
+  }
+
   start(): void {
     console.log("Car started.");
   }
@@ -181,3 +201,8 @@ class Car implements Drivable {
     console.log("Car stopped.");
   }
 }
+const myCar = new Car("Toyota", 120);
+myCar.printCar();
+myCar.start();
+myCar.drive(100);
+myCar.stop();
