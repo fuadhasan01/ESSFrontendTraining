@@ -16,4 +16,37 @@ printId(true); // Bypassing type check for demonstration
 //EsLint
 let name = "Fuad";
 console.log(name);
+class Dog {
+    bark() {
+        console.log("Woof");
+    }
+}
+class Cat {
+    meow() {
+        console.log("Meow");
+    }
+}
+function makeSound(pet) {
+    if (pet instanceof Dog) {
+        pet.bark(); // ✅ Dog
+    }
+    else {
+        pet.meow(); // ✅ Cat
+    }
+}
+const pet = new Dog();
+makeSound(pet);
+function move(vehicle) {
+    if ("drive" in vehicle) {
+        vehicle.drive("Hello"); // ✅ Car
+    }
+    else {
+        vehicle.sail(); // ✅ Boat
+    }
+}
+const myCar = {
+    drive: (msg) => console.log("Driving: " + msg),
+};
+move(myCar);
+//User-Defined Type Guards
 //# sourceMappingURL=typeNarrowing.js.map
