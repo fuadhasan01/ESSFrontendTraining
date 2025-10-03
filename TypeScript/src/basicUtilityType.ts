@@ -60,6 +60,16 @@ const productCatalog: ProductMap = {
   103: { id: 103, name: "Tablet", price: 600 },
 };
 
+console.log(productCatalog);
+
+type ProductMap2 = Record<string, Product>;
+const productCatalog2: ProductMap2 = {
+  A: { id: 101, name: "Laptop", price: 1200 },
+  B: { id: 102, name: "Smartphone", price: 800 },
+};
+
+console.log(productCatalog2["A"]);
+
 //Pick<T, K>
 // Picks specific keys from a type.
 type User4 = {
@@ -180,3 +190,19 @@ type AnotherInstance = InstanceType<typeof AnotherClass>;
 // AnotherClass
 const anotherInstance: AnotherInstance = new AnotherClass("Hello");
 console.log(anotherInstance.getTitle());
+
+//Awaited<T>
+// Unwraps the type of a Promise.
+type PromiseString = Promise<string>;
+type Unwrapped = Awaited<PromiseString>;
+// string
+const promise: PromiseString = Promise.resolve("Hello, Awaited!");
+promise.then((val: Unwrapped) => console.log(val));
+console.log(promise);
+
+//Another example of Awaited
+type PromiseNumber = Promise<number>;
+type UnwrappedNumber = Awaited<PromiseNumber>;
+// number
+const promise2: PromiseNumber = Promise.resolve(42);
+promise2.then((val: UnwrappedNumber) => console.log(val));

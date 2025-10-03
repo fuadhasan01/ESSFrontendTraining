@@ -20,6 +20,12 @@ const productCatalog = {
     102: { id: 102, name: "Smartphone", price: 800 },
     103: { id: 103, name: "Tablet", price: 600 },
 };
+console.log(productCatalog);
+const productCatalog2 = {
+    A: { id: 101, name: "Laptop", price: 1200 },
+    B: { id: 102, name: "Smartphone", price: 800 },
+};
+console.log(productCatalog2["A"]);
 // { id: number; email: string; }
 const u4 = { id: 1, email: "fuad@example.com" };
 const product = {
@@ -81,4 +87,11 @@ class AnotherClass {
 // AnotherClass
 const anotherInstance = new AnotherClass("Hello");
 console.log(anotherInstance.getTitle());
+// string
+const promise = Promise.resolve("Hello, Awaited!");
+promise.then((val) => console.log(val));
+console.log(promise);
+// number
+const promise2 = Promise.resolve(42);
+promise2.then((val) => console.log(val));
 //# sourceMappingURL=basicUtilityType.js.map
