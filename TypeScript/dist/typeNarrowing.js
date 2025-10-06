@@ -48,5 +48,7 @@ const myCar = {
     drive: (msg) => console.log("Driving: " + msg),
 };
 move(myCar);
-//User-Defined Type Guards
+function isFish(pet) {
+    return pet.swim !== undefined;
+}
 //# sourceMappingURL=typeNarrowing.js.map

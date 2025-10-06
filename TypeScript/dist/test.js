@@ -9,42 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//Class Decorators
-function Logger(constructor) {
-    console.log("This class was created:", constructor.name);
-}
-let User = class User {
-    name;
-    constructor(name) {
-        this.name = name;
-    }
-};
-User = __decorate([
-    Logger,
-    __metadata("design:paramtypes", [String])
-], User);
-//Property Decorator
-function ReadOnly(target, propertyKey) {
-    Object.defineProperty(target, propertyKey, {
-        writable: false,
-    });
-}
-class Person {
-    name = "Fuad";
-}
-__decorate([
-    ReadOnly,
-    __metadata("design:type", String)
-], Person.prototype, "name", void 0);
-const p = new Person();
-//p.name = "Labib"; //why it not show error in compilation?
-console.log(p.name); // Fuad
-//Method Decorator
-function LogMethod(target, propertyKey, descriptor) {
-    const originalMethod = descriptor.value;
+function logMethod(target, propertyKey, descriptor) {
+    const originalMethod = descriptor.value; // save original method
     descriptor.value = function (...args) {
-        console.log(`Method ${propertyKey} called with args:`, args);
-        return originalMethod.apply(this, args);
+        console.log(`Calling ${propertyKey} with arguments:`, args);
+        const result = originalMethod.apply(this, args); // call original method
+        console.log(`Result:`, result);
+        return result;
     };
     return descriptor;
 }
@@ -52,14 +23,23 @@ class Calculator {
     add(a, b) {
         return a + b;
     }
+    multiply(a, b) {
+        return a * b;
+    }
 }
 __decorate([
-    LogMethod,
+    logMethod,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", Number)
+    __metadata("design:returntype", void 0)
 ], Calculator.prototype, "add", null);
+__decorate([
+    logMethod,
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:returntype", void 0)
+], Calculator.prototype, "multiply", null);
 const calc = new Calculator();
-console.log(calc.add(2, 3)); // Logs method call and result
-console.log(calc.add(5, 7)); // Logs method call and result
-//# sourceMappingURL=decorator.js.map
+calc.add(2, 3); // Logs arguments & result
+calc.multiply(4, 5); // Logs arguments & result
+//# sourceMappingURL=test.js.map

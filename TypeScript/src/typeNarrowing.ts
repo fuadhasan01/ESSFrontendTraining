@@ -56,3 +56,12 @@ const myCar: Car = {
 move(myCar);
 
 //User-Defined Type Guards
+interface Fish {
+  swim: () => void;
+}
+interface Bird {
+  fly: () => void;
+}
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}

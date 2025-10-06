@@ -21,7 +21,7 @@ class Person {
 }
 
 const p = new Person();
-// p.name = "Labib"; ❌ Error: cannot change
+//p.name = "Labib"; //why it not show error in compilation?
 console.log(p.name); // Fuad
 
 //Method Decorator
