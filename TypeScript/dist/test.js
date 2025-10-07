@@ -9,37 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function logMethod(target, propertyKey, descriptor) {
-    const originalMethod = descriptor.value; // save original method
-    descriptor.value = function (...args) {
-        console.log(`Calling ${propertyKey} with arguments:`, args);
-        const result = originalMethod.apply(this, args); // call original method
-        console.log(`Result:`, result);
-        return result;
+function first() {
+    console.log("first(): factory evaluated");
+    return function (target, propertyKey, descriptor) {
+        console.log("first(): called");
+        return descriptor;
     };
-    return descriptor;
 }
 class Calculator {
-    add(a, b) {
-        return a + b;
-    }
-    multiply(a, b) {
-        return a * b;
+    add() {
+        return 1 + 1;
+        // This line will not be reached
+        console.log("add method called");
     }
 }
 __decorate([
-    logMethod,
+    first(),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], Calculator.prototype, "add", null);
-__decorate([
-    logMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", void 0)
-], Calculator.prototype, "multiply", null);
-const calc = new Calculator();
-calc.add(2, 3); // Logs arguments & result
-calc.multiply(4, 5); // Logs arguments & result
 //# sourceMappingURL=test.js.map

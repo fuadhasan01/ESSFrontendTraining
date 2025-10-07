@@ -10,6 +10,9 @@ class Config {
     Config.TIMEOUT = 5000;
     console.log("Static block executed!");
   }
+  static {
+    console.log("Another static block!");
+  }
 }
 
 console.log(Config.API_URL); // depends on env
