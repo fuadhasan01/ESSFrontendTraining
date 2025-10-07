@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\TypeScript\\src\\index.ts",
+      "program": "${workspaceFolder}\\TypeScript\\src\\test.ts",
       "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]
