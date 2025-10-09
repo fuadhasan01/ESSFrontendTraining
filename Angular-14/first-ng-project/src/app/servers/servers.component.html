@@ -1,0 +1,48 @@
+<label>Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<p>{{ serverName }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
+<p *ngIf="serverCreationStatus !== ''; else noServer">
+  {{ serverCreationStatus }}
+</p>
+<ng-template #noServer>
+  <p>No Server was Created</p>
+</ng-template>
+
+<hr />
+<label for="">User Name</label>
+<input type="text" class="form-control" [(ngModel)]="userName" />
+<p>{{ userName }}</p>
+<button
+  class="btn btn-danger"
+  [disabled]="!getUserName()"
+  (click)="onResetInput()"
+>
+  Reset
+</button>
+<app-server *ngFor="let server of servers"></app-server>
+
+<button class="btn btn-primary" (click)="onTogglePassword()">
+  Display Details
+</button>
+<p *ngIf="displayPassword">Secret Password = tuna</p>
+<ul>
+  <li *ngFor="let val of counters; let i = index">
+    <span
+      *ngIf="i > 3; else noStyle"
+      [ngStyle]="{ 'background-color': getListColor() }"
+      [ngClass]="{ liColor: val > 4 }"
+      >{{ val }}
+    </span>
+    <ng-template #noStyle>
+      <span>{{ val }} </span>
+    </ng-template>
+  </li>
+</ul>

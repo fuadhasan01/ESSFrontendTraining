@@ -3,7 +3,6 @@ import { Task } from './task-item.model';
 
 @Component({
   selector: 'app-task-item',
-  imports: [],
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.css'],
 })
