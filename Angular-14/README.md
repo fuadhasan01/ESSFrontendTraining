@@ -98,15 +98,22 @@ ng g c Component-Name
 
 **011: Data Binding**
 
-Data Binding (Summary):
+**Data Binding (Summary):**
 
-- It connects data between TypeScript (class) and HTML (template).
-- Keeps UI and data in sync.
-- 4 types of binding:
-  - {{ }} → Interpolation
-  - \[ \] → Property Binding
-  - ( ) → Event Binding
-  - \[( )\] → Two-way Binding
+- It connects data between **TypeScript (class)** and **HTML (template)**.  
+- Keeps the UI and data in sync.  
+- **4 types of binding:**
+  - `{{ }}` → **Interpolation**
+  - `[ ]` → **Property Binding**
+  - `( )` → **Event Binding**
+  - `[( )]` → **Two-way Binding**
+
+## 🖼 Diagram
+
+Here’s a visual representation of data binding in Angular:
+
+![Angular Data Binding Diagram](https://miro.medium.com/v2/resize:fit:1400/1*jWy5aK0LzPYW3b1Q1hzIQA.png)  
+
 
 1️⃣ Interpolation {{ }}
 
