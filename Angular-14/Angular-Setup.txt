@@ -92,6 +92,11 @@ For example,
 	-> ng serve
 	
 	Now the project should run at 4200 port.
+
+	For install bootsrtap version 3
+	-> npm install --save bootstrap@3
+	Then Add this to angular.json file in Property
+	-> "node_modules/bootstrap/dist/css/bootstrap.min.css"
 	
 **To find the compatible node and typescript version for a angular version visit the angular github repository and package.json**
 
