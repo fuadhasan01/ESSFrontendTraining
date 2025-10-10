@@ -93,11 +93,8 @@ ng g c Component-Name
 | **Type**  | **Example**    | **Usage**                                |
 | --------- | -------------- | ---------------------------------------- |
 | Element   | 'app-hello'    | &lt;app-hello&gt;&lt;/app-hello&gt;      |
-| ---       | ---            | ---                                      |
 | Attribute | '\[appHello\]' | &lt;div appHello&gt;&lt;/div&gt;         |
-| ---       | ---            | ---                                      |
 | Class     | '.appHello'    | &lt;div class="appHello"&gt;&lt;/div&gt; |
-| ---       | ---            | ---                                      |
 
 **011: Data Binding**
 
