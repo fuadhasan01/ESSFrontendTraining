@@ -1,0 +1,14 @@
+<app-game-control (dataEvent)="onDataReceived($event)"></app-game-control>
+<app-odd
+  *ngIf="receivedData && receivedData % 2 !== 0"
+  [count]="receivedData"
+></app-odd>
+<app-even
+  *ngIf="receivedData && receivedData % 2 === 0"
+  [count]="receivedData"
+></app-even>
+
+<!-- <h1 *ngIf="receivedData % 2 === 0; else elseSection"></h1>
+<ng-template #elseSection>
+  <h1>{{ receivedData }}</h1>
+</ng-template> -->
