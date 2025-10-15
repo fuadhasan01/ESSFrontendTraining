@@ -31,5 +31,11 @@
   <div class="col-xs-12">{{ singleRecipe.description }}</div>
 </div>
 <div class="row">
-  <div class="col-xs-12">Ingredients</div>
+  <div class="col-xs-12">
+    <ul>
+      <li *ngFor="let item of singleRecipe.ingredients">
+        {{ item.name + "(" + item.amount + ")" }}
+      </li>
+    </ul>
+  </div>
 </div>
