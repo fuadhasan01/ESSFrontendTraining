@@ -5,7 +5,7 @@ export class AuthService {
     const promise = new Promise<boolean>((resolve, reject) => {
       setTimeout(() => {
         resolve(this.loggedIn);
-      }, 800);
+      }, 500);
     });
     return promise;
   }
