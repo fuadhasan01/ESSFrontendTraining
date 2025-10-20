@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            name="email"
+            ngModel
+            required
+            email
+            #emailC="ngModel"
+          />
+        </div>
+        <p *ngIf="emailC.invalid && emailC.touched">Email is invalid!!</p>
+
+        <div class="form-group">
+          <label for="secret">Subscriptions</label>
+          <select
+            id="subscriptions"
+            class="form-control"
+            name="subscriptions"
+            [(ngModel)]="defaultSubs"
+            ngModel
+            #subsQ="ngModel"
+          >
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+        <p *ngIf="subsQ.invalid && subsQ.touched">Subscription is invalid!!</p>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            ngModel
+            required
+            password
+            #passQ="ngModel"
+          />
+        </div>
+        <p *ngIf="passQ.invalid && passQ.touched">Pass can't be empty!!</p>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+      <h3 *ngIf="f.invalid && f.touched">Form is invalid!!</h3>
+    </div>
+  </div>
+  <div class="row">
+    <app-user [user]="user"></app-user>
+  </div>
+</div>

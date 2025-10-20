@@ -53,7 +53,7 @@ export class AppComponent {
       ...userForm.value,
       userData: { ...userForm.value.userData },
     };
-    this.user.userData.username = 'Test';
+    userForm.reset();
   }
   clickHere() {
     console.log(this.defaultValue);
