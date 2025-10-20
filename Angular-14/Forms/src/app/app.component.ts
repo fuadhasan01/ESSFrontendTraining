@@ -7,11 +7,19 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  defaultValue: string = 'pet';
+  answer: string = '';
+  genders: string[] = ['Male', 'Female'];
+  defaultGender: string = this.genders[0];
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
 
   onSubmit(userForm: NgForm) {
-    console.log(userForm.value);
+    console.log(userForm);
+    console.log(userForm.value.userData.username);
+  }
+  clickHere() {
+    console.log(this.defaultValue);
   }
 }

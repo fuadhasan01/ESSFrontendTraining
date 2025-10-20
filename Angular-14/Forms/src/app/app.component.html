@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData">
           <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -26,17 +26,63 @@
               class="form-control"
               name="email"
               ngModel
+              required
+              email
+              #emailCtrl="ngModel"
             />
           </div>
+          <span
+            *ngIf="emailCtrl.touched && emailCtrl.invalid"
+            class="help-block"
+          >
+            Please enter a valid value!
+          </span>
         </div>
+        <span *ngIf="userForm.invalid && userForm.touched"
+          >Please enter valid user data!</span
+        >
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" name="secret" ngModel>
+          <select
+            id="secret"
+            class="form-control"
+            name="secret"
+            [(ngModel)]="defaultValue"
+            #secretQ="ngModel"
+            (ngModelChange)="clickHere()"
+          >
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="form-group">
+          <textarea
+            name="questionAnswer"
+            rows="3"
+            id="questionAnswer"
+            class="form-control"
+            [(ngModel)]="answer"
+          ></textarea>
+          <p>Your answer: {{ answer }}</p>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label for="">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="defaultGender"
+              [value]="gender"
+            />
+            {{ gender }}
+          </label>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!userForm.valid"
+        >
+          Submit
+        </button>
         <!-- Display form state -->
         <p>Valid: {{ nameCtrl.valid }}</p>
         <p>Invalid: {{ nameCtrl.invalid }}</p>
@@ -44,6 +90,7 @@
         <p>Untouched: {{ nameCtrl.untouched }}</p>
         <p>Dirty: {{ nameCtrl.dirty }}</p>
         <p>Pristine: {{ nameCtrl.pristine }}</p>
+        <p>{{ secretQ.value }}</p>
       </form>
     </div>
   </div>
