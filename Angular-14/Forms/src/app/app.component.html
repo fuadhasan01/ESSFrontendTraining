@@ -10,12 +10,17 @@
               id="username"
               class="form-control"
               name="username"
-              ngModel
+              [(ngModel)]="defaultUserName"
               required
               #nameCtrl="ngModel"
             />
           </div>
-          <button class="btn btn-default" type="button">
+          <p>Your answer: {{ defaultUserName }}</p>
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="suggestUserName(userForm)"
+          >
             Suggest an Username
           </button>
           <div class="form-group">
@@ -63,7 +68,6 @@
             class="form-control"
             [(ngModel)]="answer"
           ></textarea>
-          <p>Your answer: {{ answer }}</p>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label for="">
@@ -72,6 +76,7 @@
               name="gender"
               [(ngModel)]="defaultGender"
               [value]="gender"
+              required
             />
             {{ gender }}
           </label>
@@ -84,14 +89,26 @@
           Submit
         </button>
         <!-- Display form state -->
-        <p>Valid: {{ nameCtrl.valid }}</p>
+        <!-- <p>Valid: {{ nameCtrl.valid }}</p>
         <p>Invalid: {{ nameCtrl.invalid }}</p>
         <p>Touched: {{ nameCtrl.touched }}</p>
         <p>Untouched: {{ nameCtrl.untouched }}</p>
         <p>Dirty: {{ nameCtrl.dirty }}</p>
         <p>Pristine: {{ nameCtrl.pristine }}</p>
-        <p>{{ secretQ.value }}</p>
+        <p>{{ secretQ.value }}</p> -->
       </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row" *ngIf="isSubmit">
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p>User Name: {{ user.userData.username }}</p>
+      <p>User Name2: {{ userForm.value.userData.username }}</p>
+      <p>Email: {{ user.userData.email }}</p>
+      <p>Secret: {{ user.secret }}</p>
+      <p>Answer: {{ user.questionAnswer }}</p>
+      <p>Gender: {{ user.gender }}</p>
     </div>
   </div>
 </div>
