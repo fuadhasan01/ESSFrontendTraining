@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +20,15 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = new FormGroup({
       userData: new FormGroup({
-        username: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
-        email: new FormControl(null, [Validators.required, Validators.email, this.forbiddenEmails.bind]),
+        username: new FormControl(null, [
+          Validators.required,
+          this.forbiddenNames.bind(this),
+        ]),
+        email: new FormControl(null, [
+          Validators.required,
+          Validators.email,
+          this.forbiddenEmails.bind(this),
+        ]),
       }),
       gender: new FormControl('male'),
       hobbies: new FormArray([]),
@@ -32,23 +46,20 @@ export class AppComponent implements OnInit {
     return (<FormArray>this.signupForm.get('hobbies')).controls;
   }
   forbiddenNames(control: FormControl): { [s: string]: boolean } | null {
-    if (this.forbiddenUsernames.indexOf(control.value) !== -1)
-    {
+    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return { nameIsForbidden: true };
-    } else
-    {
+    } else {
       return null;
     }
   }
-  forbiddenEmails(control:FormControl): Promise<{ [s: string]: boolean } | null> {
-    const promise = new Promise<{ [s: string]: boolean } | null>((resolve, reject) => {
+  forbiddenEmails(
+    control: AbstractControl
+  ): Promise<{ [s: string]: boolean } | null> {
+    const promise = new Promise<ValidationErrors | null>((resolve, reject) => {
       setTimeout(() => {
-        if (control.value === 'test@test.com')
-        {
+        if (control.value === 'test@test.com') {
           resolve({ emailIsForbidden: true });
-        }
-        else
-        {
+        } else {
           resolve(null);
         }
       }, 1500);

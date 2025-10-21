@@ -18,9 +18,14 @@
                 signupForm.get('userData.username')?.touched
               "
             >
-            <span *ngIf="signupForm.get('userData.username')?.errors?.['required']">Username is required</span>
-            <span *ngIf="signupForm.get('userData.username')?.errors?.['nameIsForbidden']">This name is invalid</span>
-
+              <span
+                *ngIf="signupForm.get('userData.username')?.errors?.['required']"
+                >Username is required</span
+              >
+              <span
+                *ngIf="signupForm.get('userData.username')?.errors?.['nameIsForbidden']"
+                >This name is invalid</span
+              >
             </p>
           </div>
           <div class="form-group">
@@ -38,9 +43,17 @@
                 signupForm.get('userData.email')?.touched
               "
             >
-            <span *ngIf="signupForm.get('userData.email')?.errors?.['required']">Email is required</span>
-            <span *ngIf="signupForm.get('userData.email')?.errors?.['email']">Email is not valid</span>
-            <span *ngIf="signupForm.get('userData.email')?.errors?.['emailIsForbidden']">This email is forbidden</span>
+              <span
+                *ngIf="signupForm.get('userData.email')?.errors?.['required']"
+                >Email is required</span
+              >
+              <span *ngIf="signupForm.get('userData.email')?.errors?.['email']"
+                >Email is not valid</span
+              >
+              <span
+                *ngIf="signupForm.get('userData.email')?.errors?.['emailIsForbidden']"
+                >This email is forbidden</span
+              >
             </p>
           </div>
         </div>
@@ -53,7 +66,9 @@
         </div>
         <div formArrayName="hobbies">
           <h4>Your Hobbies</h4>
-          <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()">
+            Add Hobby
+          </button>
           <div
             class="from-group"
             *ngFor="let hobbyControl of getControls(); let i = index"
@@ -65,15 +80,15 @@
               class="form-control"
               [formControlName]="i"
             />
-            <p class="text-danger" *ngIf="hobbyControl.invalid && hobbyControl.touched">
+            <p
+              class="text-danger"
+              *ngIf="hobbyControl.invalid && hobbyControl.touched"
+            >
               Hobby is not valid
             </p>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">
-          Submit
-        </button>
-
+        <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>
