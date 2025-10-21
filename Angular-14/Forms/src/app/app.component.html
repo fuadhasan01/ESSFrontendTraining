@@ -103,7 +103,7 @@
   <div class="row" *ngIf="isSubmit">
     <div class="col-xs-12">
       <h3>Your Data</h3>
-      <p>User Name: {{ user.userData.username }}</p>
+      <p>User Name: {{ user.userData.username | uppercase }}</p>
       <p>User Name2: {{ userForm.value.userData.username }}</p>
       <p>Email: {{ user.userData.email }}</p>
       <p>Secret: {{ user.secret }}</p>

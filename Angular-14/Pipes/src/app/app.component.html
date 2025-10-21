@@ -1,0 +1,57 @@
+<!-- app.component.html -->
+<h2>{{ title }}</h2>
+
+<!-- 🗓 Date Pipe -->
+<p><b>Date Pipe:</b> {{ today }}</p>
+<p><b>Date Pipe:</b> {{ today | date : "fullDate" }}</p>
+<p><b>Short Date:</b> {{ today | date : "short" }}</p>
+
+<!-- 💰 Currency Pipe -->
+<p><b>Currency (USD):</b> {{ price | currency : "BDT" }}</p>
+<p><b>Currency (USD):</b> {{ price | currency : "USD" }}</p>
+<p>
+  <b>Currency (EUR):</b> {{ price | currency : "EUR" : "symbol" : "1.2-2" }}
+</p>
+
+<!-- 🔢 Number & Percent -->
+<p><b>Number:</b> {{ price | number : "1.2-2" }}</p>
+<p><b>Percent:</b> {{ percentage | percent : "1.1-2" }}</p>
+
+<!-- 🔡 String Transformations -->
+<p><b>Lowercase:</b> {{ message | lowercase }}</p>
+<p><b>Uppercase:</b> {{ message | uppercase }}</p>
+<p><b>Titlecase:</b> {{ message | titlecase }}</p>
+<!-- Custom Pipe -->
+<p><b>Reverse:</b> {{ message | reverse }}</p>
+<p><b>Repeat:</b> {{ message + " " | repeatText : 3 }}</p>
+
+<!-- 📜 JSON Pipe -->
+<p><b>JSON:</b> {{ user | json }}</p>
+
+<!-- ✂️ Slice Pipe -->
+<p><b>Slice (first 2 users):</b> {{ users | slice : 0 : 2 }}</p>
+
+<!-- 🔁 Async Pipe -->
+<p><b>Async Pipe:</b> {{ observable$ | async }}</p>
+
+<!-- 🌍 i18nSelect Pipe -->
+<p><b>i18nSelect:</b> {{ gender | i18nSelect : inviteMap }}</p>
+
+<!-- 🌍 i18nPlural Pipe -->
+<p><b>i18nPlural:</b> {{ messages.length | i18nPlural : messageMapping }}</p>
+
+<!-- 🗝 KeyValue Pipe -->
+<ul>
+  <b>KeyValue Pipe:</b>
+  <li *ngFor="let item of user | keyvalue">{{ item.key }}: {{ item.value }}</li>
+</ul>
+
+<h2>Filter Pipe Example</h2>
+
+<input type="text" [(ngModel)]="searchText" placeholder="Search name..." />
+<button class="btn btn-primary" (click)="onAddUser()">Add User</button>
+<ul>
+  <li *ngFor="let user of newUsers | filter : searchText">
+    {{ user }}
+  </li>
+</ul>
