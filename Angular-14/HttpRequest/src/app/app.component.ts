@@ -1,59 +1,61 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { map } from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { map, Observable, Subscription } from 'rxjs';
 import { Post } from './post.model';
+import { NgForm } from '@angular/forms';
+import { PostsService } from './posts.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  loadedPosts = [];
-
-  constructor(private http: HttpClient) {}
+export class AppComponent implements OnInit, OnDestroy {
+  @ViewChild('postForm') postForm!: NgForm;
+  loadedPosts: Post[] = [];
+  isfetching = false;
+  error: string | null = null;
+  private errorSub!: Subscription;
+  constructor(private http: HttpClient, private postService: PostsService) {}
 
   ngOnInit() {
+    this.errorSub = this.postService.error.subscribe((errorMessage) => {
+      this.error = errorMessage;
+    });
     this.onFetchPosts();
   }
 
   onCreatePost(postData: Post) {
     // Send Http request
-    this.http
-      .post(
-        'https://ng-complete-guide-c7ad5-default-rtdb.firebaseio.com/posts.json',
-        postData
-      )
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+    this.postService.createAndStorePost(postData);
+    this.postForm.reset();
   }
 
   onFetchPosts() {
-    this.fetchPost();
+    this.isfetching = true;
+    this.postService.fetchPost().subscribe(
+      (fetchData) => {
+        this.loadedPosts = fetchData;
+        this.isfetching = false;
+      },
+      (error) => {
+        this.isfetching = false;
+        this.error = error.message;
+      }
+    );
   }
 
   onClearPosts() {
     // Send Http request
+    this.postService.clearPost().subscribe(() => {
+      this.loadedPosts = [];
+    });
   }
-  private fetchPost() {
-    this.http
-      .get<{ [key: string]: Post }>(
-        'https://ng-complete-guide-c7ad5-default-rtdb.firebaseio.com/posts.json'
-      )
-      .pipe(
-        map((responseData) => {
-          const postArray: Post[] = [];
-          if (responseData) {
-            Object.keys(responseData).forEach((key) => {
-              postArray.push({ ...responseData[key], id: key });
-            });
-          }
-          return postArray;
-        })
-      )
-      .subscribe((fetchData) => {
-        console.log(fetchData);
-      });
+  onHandleError() {
+    this.error = null;
+  }
+
+  ngOnDestroy(): void {
+    this.errorSub.unsubscribe;
   }
 }
