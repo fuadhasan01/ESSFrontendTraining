@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onCreatePost(postData: Post) {
     // Send Http request
+
     this.postService.createAndStorePost(postData);
     this.postForm.reset();
   }

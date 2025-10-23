@@ -22,7 +22,8 @@ export class PostsService {
           console.log(responseData);
         },
         error: (error) => {
-          this.error.next(error.message);
+          this.error.next(error.error.error);
+          console.error(error.status);
         },
       });
   }
