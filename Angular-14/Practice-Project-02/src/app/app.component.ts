@@ -1,11 +1,14 @@
 import {
   Component,
+  OnDestroy,
+  OnInit,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { AlertComponent } from './alert/alert.component';
 import { ModalComponent } from './modal/modal.component';
+import { interval, Subscription } from 'rxjs';
 interface ServerType {
   type: string;
   name: string;
@@ -40,7 +43,7 @@ export class AppComponent {
 
   openModal() {
     this.container.clear();
-    this.container.createComponent(ModalComponent);
-    // modalRef.instance.loadAlert(); // load the dynamic alert inside modal
+    const modalRef = this.container.createComponent(ModalComponent);
+    modalRef.instance.loadAlert(); // load the dynamic alert inside modal
   }
 }

@@ -4,6 +4,7 @@ import { map, Observable, Subscription } from 'rxjs';
 import { Post } from './post.model';
 import { NgForm } from '@angular/forms';
 import { PostsService } from './posts.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -34,16 +35,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onFetchPosts() {
     this.isfetching = true;
-    this.postService.fetchPost().subscribe(
-      (fetchData) => {
+    this.postService.fetchPost().subscribe({
+      next: (fetchData) => {
         this.loadedPosts = fetchData;
         this.isfetching = false;
       },
-      (error) => {
+      error: (error) => {
         this.isfetching = false;
         this.error = error.message;
-      }
-    );
+      },
+    });
   }
 
   onClearPosts() {
