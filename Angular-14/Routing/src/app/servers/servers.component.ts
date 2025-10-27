@@ -22,4 +22,9 @@ export class ServersComponent implements OnInit {
   onReload() {
     // this.router.navigate(['servers'], { relativeTo: this.route });
   }
+  onActivated() {
+    this.serversService.activatedEmitter.next(
+      'Activated from Servers Component'
+    );
+  }
 }
