@@ -2,14 +2,14 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
-        [routerLink]="['/servers', server.id]"
-        [queryParams]="{ allowEdit: server.id === 2 ? '1' : '0' }"
+        [routerLink]="['/servers', server2.id]"
+        [queryParams]="{ allowEdit: server2.id === 2 ? '1' : '0' }"
         fragment="hello"
         href="#"
         class="list-group-item"
-        *ngFor="let server of servers"
+        *ngFor="let server2 of servers"
       >
-        {{ server.name }}
+        {{ server2.name }}
       </a>
     </div>
   </div>

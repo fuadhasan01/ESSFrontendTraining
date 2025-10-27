@@ -1,4 +1,11 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ViewContainerRef,
+  ViewEncapsulation,
+} from '@angular/core';
+import { AlertComponent } from './alert/alert.component';
+import { ModalComponent } from './modal/modal.component';
 interface ServerType {
   type: string;
   name: string;
@@ -27,5 +34,13 @@ export class AppComponent {
       name: blueprintData.serverName,
       content: blueprintData.serverContent,
     });
+  }
+  @ViewChild('modalContainer', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
+  openModal() {
+    this.container.clear();
+    this.container.createComponent(ModalComponent);
+    // modalRef.instance.loadAlert(); // load the dynamic alert inside modal
   }
 }
