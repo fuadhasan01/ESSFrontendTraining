@@ -111,3 +111,66 @@ angular.json -> More about the CLI
 main.ts -> main TS file.
 environment -> There are two different environment file. One for developing or debug another for production.
 polyfills.ts -> Browser information
+
+
+*********************
+Latest Tools, Multiple Angular Versions
+1️⃣ Global Tools
+
+Node: Keep latest (e.g., v22) via NVM
+
+nvm install 22
+nvm use 22
+node -v
+
+
+Angular CLI: Keep latest globally
+
+npm install -g @angular/cli
+ng version
+
+2️⃣ Creating Angular Projects of Specific Versions
+
+Angular 14:
+
+npx @angular/cli@14 new my-angular14-app
+cd my-angular14-app
+npm install
+ng serve
+
+
+Angular 17:
+
+npx @angular/cli@17 new my-angular17-app
+cd my-angular17-app
+npm install
+ng serve
+
+
+Latest Angular:
+
+ng new my-latest-app
+cd my-latest-app
+npm install
+ng serve
+
+
+⚡ Key: Each project uses its own local CLI (node_modules/@angular/cli), so global CLI version doesn’t conflict.
+
+3️⃣ Running Projects
+cd project-folder
+ng serve
+
+
+Works for Angular 14, 17, or latest.
+
+Node warnings may appear for older Angular versions but are usually safe to ignore.
+
+4️⃣ Optional Node Switching
+
+If an older project breaks, switch Node via NVM:
+
+nvm install 16
+nvm use 16
+
+*******************************

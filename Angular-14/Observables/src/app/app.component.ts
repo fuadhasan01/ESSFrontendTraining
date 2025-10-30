@@ -4,7 +4,6 @@ import { SenderComponent } from './sender.component';
 import { ReceiverComponent } from './receiver.component';
 import {
   catchError,
-  concatMap,
   debounceTime,
   filter,
   interval,
@@ -16,11 +15,20 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
+import { PostComponent } from './posts/post/post.component';
+import { PostService } from './post.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SenderComponent, ReceiverComponent, RouterOutlet],
+  imports: [
+    SenderComponent,
+    ReceiverComponent,
+    RouterOutlet,
+    PostComponent,
+    CommonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -28,7 +36,7 @@ export class AppComponent implements OnInit {
   title = 'Observables';
 
   ngOnInit(): void {
-    this.practice();
+    // this.practice();
   }
   practice() {
     const coldObservable = new Observable((observer) => {
@@ -85,7 +93,7 @@ export class AppComponent implements OnInit {
           return x;
         }),
         catchError((err) => {
-          console.error(err);
+          console.error('Caught error:', err.message); // cleaner output
           return of(-1);
         })
       )
@@ -98,17 +106,11 @@ export class AppComponent implements OnInit {
       .subscribe((x) => console.log(x));
 
     //takeUntil example
-    console.log('takeUntil example:');
-    const stop$ = interval(2500);
-    interval(1000)
-      .pipe(takeUntil(stop$))
-      .subscribe((x) => console.log(x));
-
-    //concatMap example
-    console.log('concatMap example:');
-    of(1, 2, 3)
-      .pipe(concatMap((x) => interval(1000).pipe(map((y) => x + y))))
-      .subscribe((x) => console.log(x));
+    // console.log('takeUntil example:');
+    // const stop$ = interval(2500);
+    // interval(1000)
+    //   .pipe(takeUntil(stop$))
+    //   .subscribe((x) => console.log(x));
 
     // switchMap example
     of(1, 2, 3)
