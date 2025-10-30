@@ -13,5 +13,6 @@ export class SenderComponent {
 
   sendMessage(message: string) {
     this.messageService.message$.next(message);
+    this.messageService.message$.next('Message sent: ' + message);
   }
 }
