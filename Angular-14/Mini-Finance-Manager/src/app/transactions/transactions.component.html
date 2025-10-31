@@ -1,0 +1,28 @@
+<div class="container mt-3">
+  <div class="">
+    <h2 class="mb-4">Transactions</h2>
+    <hr />
+    <button
+      type="button"
+      data-mdb-button-init
+      data-mdb-ripple-init
+      class="btn btn-primary mb-4"
+      data-mdb-modal-init
+      data-mdb-target="#staticBackdrop4"
+      (click)="openCreateForm()"
+    >
+      + Add Transaction
+    </button>
+  </div>
+
+  <div class="accordion-wrapper mt-2 mb-2 bg-light" *ngIf="isCreateFormOpen">
+    <div class="accordion-inner border rounded p-3">
+      <app-transaction-item-edit
+        (cancel)="closeCreateForm()"
+        (save)="onTransactionCreated($event)"
+      ></app-transaction-item-edit>
+    </div>
+  </div>
+
+  <app-transaction-list [transactions]="transactions"></app-transaction-list>
+</div>

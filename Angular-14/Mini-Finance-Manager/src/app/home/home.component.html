@@ -1,0 +1,57 @@
+<div class="container py-4">
+  <h2 class="mb-4 text-center">Finance Summary</h2>
+
+  <div class="row g-4 justify-content-center">
+    <!-- Total Income Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-start border-4 border-success">
+        <div class="card-body text-center">
+          <h5 class="card-title text-success">Total Income</h5>
+          <h3 class="card-text">+ {{ totalIncome | currency }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Expense Card -->
+    <div class="col-md-4">
+      <div class="card shadow-sm border-start border-4 border-danger">
+        <div class="card-body text-center">
+          <h5 class="card-title text-danger">Total Expense</h5>
+          <h3 class="card-text">- {{ totalExpense | currency }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="col-md-4">
+      <div
+        class="card shadow-sm border-start border-4"
+        [ngClass]="{
+          'border-success': balance >= 0,
+          'border-danger': balance < 0
+        }"
+      >
+        <div class="card-body text-center">
+          <h5
+            class="card-title"
+            [ngClass]="{
+              'text-success': balance >= 0,
+              'text-danger': balance < 0
+            }"
+          >
+            Balance
+          </h5>
+          <h3
+            class="card-text"
+            [ngClass]="{
+              'text-success': balance >= 0,
+              'text-danger': balance < 0
+            }"
+          >
+            {{ balance | currency }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

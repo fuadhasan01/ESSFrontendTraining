@@ -135,7 +135,16 @@ Angular 14:
 
 npx @angular/cli@14 new my-angular14-app
 cd my-angular14-app
-npm install
+
+(For version 14 installation we have to do this:
+	-> npm uninstall @types/node
+	-> npm install --save-dev @types/node@16.11.68
+		
+	This now, we have to delete and reinstall the dependencies to be safe.
+	-> npx rimraf node_modules
+	-> del package-lock.json
+	-> npm install
+)
 ng serve
 
 
