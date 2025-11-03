@@ -30,11 +30,11 @@
       </div>
       <div class="col-md-6">
         <label class="form-label fw-semibold">Category</label>
-        <input
-          formControlName="category"
-          class="form-control"
-          placeholder="Enter category"
-        />
+        <select formControlName="category" class="form-select">
+          <option *ngFor="let cat of categories" [value]="cat">
+            {{ cat }}
+          </option>
+        </select>
       </div>
     </div>
 

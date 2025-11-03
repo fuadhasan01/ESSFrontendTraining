@@ -1,0 +1,24 @@
+<div class="container-3">
+  <h2 class="mb-4">Categories</h2>
+  <hr />
+  <input
+    type="text"
+    class="form-control mt-3"
+    placeholder="New Category"
+    [(ngModel)]="newCategory"
+    #categoryInput
+  />
+  <p *ngIf="!categoryInput.value && submitted" class="text-danger">
+    Please enter a category name.
+  </p>
+  <button class="btn btn-primary mt-3" (click)="addCategory()">
+    Add Category
+  </button>
+  <div class="mt-4">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let category of categories">
+        {{ category }}
+      </li>
+    </ul>
+  </div>
+</div>

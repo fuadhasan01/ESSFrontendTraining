@@ -11,11 +11,13 @@ import { TransactionListItemComponent } from './transactions/transaction-list/tr
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransactionItemEditComponent } from './transactions/transaction-list/transaction-list-item/transaction-item-edit/transaction-item-edit.component';
 import { HomeComponent } from './home/home.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'transactions', component: TransactionsComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'transactions', component: TransactionsComponent },
+  { path: 'category', component: CategoryComponent },
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ const routes: Routes = [
     TransactionListItemComponent,
     TransactionItemEditComponent,
     HomeComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
